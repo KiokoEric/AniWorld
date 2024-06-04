@@ -1,10 +1,9 @@
 import axios from 'axios';
-import '../Anime/Anime.css';
+import '../Genre/Genre.css';
 import React, { ChangeEvent, useState } from 'react';
 import { GiDoubleDragon } from "react-icons/gi";
 import { IoSearchSharp } from "react-icons/io5";
-
-const Anime: React.FC = () => {
+const Genre: React.FC = () => {
 
     const [Search, setSearch] = useState("")
     const [Animes, setAnimes] = useState([])
@@ -14,7 +13,7 @@ const Anime: React.FC = () => {
         setSearch(e.target.value)
     }
 
-    const getAnime = async (e: React.FormEvent<HTMLFormElement>) => {
+    const getGenre = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
     if(Search === "") {
@@ -26,13 +25,13 @@ const Anime: React.FC = () => {
             params: {
                 page: '1',
                 size: '35',
-                search: Search
-            },
+                genres: Search
+                },
             headers: {
                 'X-RapidAPI-Key': '5900d31798msha8dd7877bd6558dp109800jsn25f147783e1b',
                 'X-RapidAPI-Host': 'anime-db.p.rapidapi.com'
             }
-        };
+            };
             try {
                 const response = await axios.request(options);
                 setAnimes(response.data.data)
@@ -45,7 +44,7 @@ const Anime: React.FC = () => {
 
     const onSearch = (e: React.MouseEvent<SVGAElement>) => {
         e.preventDefault()
-        getAnime
+        getGenre
     }
 
     const handleClick = (Link: any) => {
@@ -54,17 +53,17 @@ const Anime: React.FC = () => {
 
 return (
     <div>
-        <section id='AnimeSearchPage' className="flex flex-col items-center justify-center gap-4 mb-5 text-white">
-            <h1 className='text-3xl'>Welcome to AniWorld.</h1>
-            <form onSubmit={getAnime} className='bg-white flex flex-row justify-between gap-1 px-1 py-1 rounded w-2/5'>
+        <section id='GenreSearchPage' className="flex flex-col items-center justify-center gap-4 mb-5 text-white">
+            <h1 className='text-3xl'>Welcome to AniWorld. Search your Anime Genre.</h1>
+            <form onSubmit={getGenre} className='bg-white flex flex-row justify-between gap-1 px-1 py-1 rounded w-2/5'>
                 <GiDoubleDragon size="1.8rem" color="black" />
-                <input type="text" placeholder="Search Anime..." className='outline-none px-2 py-1 text-black w-11/12' value={Search} onChange={handleSearch} />
+                <input type="text" placeholder="Search Anime Genre..." className='outline-none px-2 py-1 text-black w-11/12' value={Search} onChange={handleSearch} />
                 <IoSearchSharp size="1.8rem" color="black" className='cursor-pointer' onClick={onSearch} />
             </form> 
             <span className="Error" >{SearchError}</span>
-            <p>Search your favourite Animes e.g Naruto, One Piece, Hunter X Hunter </p>
+            <p>Search your Genre e.g Fantasy, Action, Mystery </p>
         </section>
-        <section id='SearchResults' className='grid grid-cols-3 gap-5 justify-between px-10'>
+        <section id='GenreSearchResults' className='grid grid-cols-3 gap-5 justify-between px-10'>
             {
             (!Animes) ? <h2 className='Failure'>No Results Found</h2> :
             Animes.map((Anime: any) => {
@@ -89,4 +88,4 @@ return (
 )
 }
 
-export default Anime
+export default Genre
