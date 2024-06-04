@@ -4,6 +4,7 @@ import Header from './Components/Header/Header';
 import Anime from './Pages/Anime/Anime';
 import Genre from './Pages/Genre/Genre';
 import Manga from './Pages/Manga/Manga';
+import Create from './Pages/Create/Create';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Route path='/Home' element={ <Anime />  } />
         <Route path='/Genre' element={ <Genre /> } />
         <Route path='/Manga' element={ <Manga /> } />
+        <Route path='/Create' element={ <Create /> } />
       </Routes>
     </div>
   )
