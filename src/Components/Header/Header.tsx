@@ -20,7 +20,7 @@ return (
             </nav>
         </section>
         <section>
-            <button className='bg-black px-2 py-2 rounded text-base text-white'>Favourite Animes</button>
+            <button className='bg-black px-4 py-2 rounded text-base text-white'>Favourite Animes</button>
         </section>
     </div>
 )

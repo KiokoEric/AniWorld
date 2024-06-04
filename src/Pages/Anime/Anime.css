@@ -1,0 +1,11 @@
+#SearchPage {
+    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../../assets/Anime_Page.avif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 260px;
+    width: 100%;
+}
+#SearchResults div:hover {
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.55);
+}
