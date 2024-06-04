@@ -55,7 +55,7 @@ const Anime: React.FC = () => {
 return (
     <div>
         <section id='AnimeSearchPage' className="flex flex-col items-center justify-center gap-4 mb-5 text-white">
-            <h1 className='text-3xl'>Welcome to AniWorld.Search your Anime.</h1>
+            <h1 className='text-4xl'>Welcome to AniWorld.Search your Anime.</h1>
             <form onSubmit={getAnime} className='bg-white flex flex-row justify-between gap-1 px-1 py-1 rounded w-2/5'>
                 <GiDoubleDragon size="1.8rem" color="black" />
                 <input type="text" placeholder="Search Anime..." className='outline-none px-2 py-1 text-black w-11/12' value={Search} onChange={handleSearch} />

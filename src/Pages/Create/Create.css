@@ -1,0 +1,6 @@
+#Create {
+    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../../assets/Create_Image.jpg);
+    background-position: bottom;
+    height: 280px;
+    width: 100%;
+}
