@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './Components/Header/Header';
 import Anime from './Pages/Anime/Anime';
 import Genre from './Pages/Genre/Genre';
-
+import Manga from './Pages/Manga/Manga';
 
 function App() {
 
@@ -13,6 +13,7 @@ function App() {
       <Routes>
         <Route path='/Home' element={ <Anime />  } />
         <Route path='/Genre' element={ <Genre /> } />
+        <Route path='/Manga' element={ <Manga /> } />
       </Routes>
     </div>
   )
