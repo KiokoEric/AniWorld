@@ -18,7 +18,7 @@ return (
             <nav className='flex flex-col cursor-pointer list-none text=lg sm:flex-row sm:gap-14'>
                 <Link to="/Home" className='text-black no-underline'>Anime</Link>
                 <Link to="/Genre" className='text-black no-underline'>Anime Genre</Link>
-                <li>Manga</li>
+                <Link to="/Manga" className='text-black no-underline'>Manga</Link>
                 <li>Create</li>
             </nav>
         </section>
