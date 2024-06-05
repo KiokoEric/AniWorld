@@ -1,8 +1,7 @@
 import axios from 'axios';
 import '../Genre/Genre.css';
 import React, { ChangeEvent, useState } from 'react';
-import { GiDoubleDragon } from "react-icons/gi";
-import { IoSearchSharp } from "react-icons/io5";
+import SearchPage from '../../Components/Common/SearchPage/SearchPage';
 const Genre: React.FC = () => {
 
     const [Search, setSearch] = useState("")
@@ -42,9 +41,33 @@ const Genre: React.FC = () => {
         }
     }
 
-    const onSearch = (e: React.MouseEvent<SVGAElement>) => {
+    const onSearch = async(e: React.MouseEvent<SVGAElement>) => {
         e.preventDefault()
-        getGenre
+        
+        if(Search === "") {
+            setSearchError("Kindly enter a search item")
+        } else {
+            const options = {
+                method: 'GET',
+                url: 'https://anime-db.p.rapidapi.com/anime',
+                params: {
+                    page: '1',
+                    size: '35',
+                    genres: Search
+                    },
+                headers: {
+                    'X-RapidAPI-Key': '5900d31798msha8dd7877bd6558dp109800jsn25f147783e1b',
+                    'X-RapidAPI-Host': 'anime-db.p.rapidapi.com'
+                }
+                };
+                try {
+                    const response = await axios.request(options);
+                    setAnimes(response.data.data)
+                    console.log(response.data.data);
+                } catch (error) {
+                    console.error(error);
+                }
+            }
     }
 
     const handleClick = (Link: any) => {
@@ -53,16 +76,22 @@ const Genre: React.FC = () => {
 
 return (
     <div>
-        <section id='GenreSearchPage' className="flex flex-col items-center justify-center gap-4 mb-5 text-white">
-            <h1 className='text-4xl'>Welcome to AniWorld. Search your Anime Genre.</h1>
-            <form onSubmit={getGenre} className='bg-white flex flex-row justify-between gap-1 px-1 py-1 rounded w-2/5'>
-                <GiDoubleDragon size="1.8rem" color="black" />
-                <input type="text" placeholder="Search Anime Genre..." className='outline-none px-2 py-1 text-black w-11/12' value={Search} onChange={handleSearch} />
-                <IoSearchSharp size="1.8rem" color="black" className='cursor-pointer' onClick={onSearch} />
-            </form> 
-            <span className="Error" >{SearchError}</span>
-            <p>Search your Genre e.g Fantasy, Action, Mystery </p>
-        </section>
+        <SearchPage 
+            idName='GenreSearchPage'
+            ContainerStyle= 'flex flex-col items-center justify-center gap-4 mb-5 text-white'
+            Heading='Welcome to AniWorld.Search your Anime Genre.'
+            HeadingStyle='text-4xl'
+            formStyle='bg-white flex flex-row justify-between gap-1 px-1 py-1 rounded w-2/5'
+            Placeholder='Search Anime Genre...'
+            inputStyle='outline-none px-2 py-1 text-black w-11/12'
+            Search={Search}
+            onChange={handleSearch}
+            onSubmit={getGenre}
+            IconStyle='cursor-pointer'
+            onClick={onSearch}
+            SearchError={SearchError}
+            Text='Search your Genre e.g Fantasy, Action, Mystery'
+        />{" "}
         <section id='GenreSearchResults' className='grid grid-cols-3 gap-5 justify-between px-10'>
             {
             (!Animes) ? <h2 className='Failure'>No Results Found</h2> :
