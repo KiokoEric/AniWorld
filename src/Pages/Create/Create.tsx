@@ -1,3 +1,4 @@
+import SearchPage from "../../Components/Common/SearchPage/SearchPage";
 import "../Create/Create.css";
 import React, { ChangeEvent, useState } from 'react';
 
@@ -32,9 +33,13 @@ const Create: React.FC = () => {
 
 return (
     <div>
-        <section id='Create' className="flex flex-col items-center justify-center mb-5 text-white">
-            <h2 className="text-4xl">Anime & Manga Review</h2>
-        </section>
+        <SearchPage
+            idName='Create'
+            ContainerStyle= 'flex flex-col items-center justify-center mb-5 text-white'
+            Heading='Anime & Manga Review'
+            HeadingStyle='text-4xl'
+            formStyle='hidden'
+        />
         <form onSubmit={AddAnime} action="" method="get" className="flex flex-col items-center justify-center gap-8 mb-5">
             <p className="flex flex-col gap-2">
                 <label htmlFor="Title">Anime/Manga Title</label>
@@ -47,7 +52,7 @@ return (
             <p className="flex flex-col gap-2"> 
                 <label htmlFor="Genre">Genre</label>
                     <select name="" id="" value={Genre} onChange={handleGenre} className='border-black border-b outline-none px-2 py-1 text-black w-96'  required>
-                        <option value="">Select a Genre</option>
+                        <option value="">Select Genre</option>
                         <option value="Action">Action</option>
                         <option value="Adventure">Adventure</option>
                         <option value="Comedy">Comedy</option>
@@ -63,7 +68,7 @@ return (
                 <input type="text" name="Image" id="Image" placeholder='Enter Image Url...' value={Image} onChange={handleImage} className='border-black border-b outline-none px-2 py-1 text-black w-96' required />
             </p>
             <p className='Green' >{Success}</p>
-            <button className='bg-black px-5 py-2 rounded text-base text-white' type="submit">Add New Task</button> 
+            <button className='bg-black px-5 py-2 rounded text-base text-white' type="submit">Add New Review</button> 
         </form>
     </div>
 )

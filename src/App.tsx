@@ -13,7 +13,7 @@ function App() {
     <div>
       <Header />
       <Routes>
-        <Route path='/Home' element={ <Anime />  } />
+        <Route path='/' element={ <Anime />  } />
         <Route path='/Genre' element={ <Genre /> } />
         <Route path='/Manga' element={ <Manga /> } />
         <Route path='/Popular' element={ <Popular /> } />

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import '../Popular/Popular.css';
 import React, { useEffect, useState } from 'react';
+import SearchPage from '../../Components/Common/SearchPage/SearchPage';
 
 const Popular: React.FC = () => {
 
@@ -37,9 +38,13 @@ const Popular: React.FC = () => {
 
 return (
     <div>
-        <section id='PopularSearchPage' className="flex flex-col items-center justify-center mb-5 text-white">
-            <h2 className="text-4xl">Top Mangas</h2>
-        </section>
+        <SearchPage 
+            idName='PopularSearchPage'
+            ContainerStyle= 'flex flex-col items-center justify-center mb-5 text-white'
+            Heading='Top Mangas'
+            HeadingStyle='text-4xl'
+            formStyle='hidden'
+        />
         <section id='SearchResults' className='grid grid-cols-3 gap-5 justify-between px-10'>
             {
             (!Mangas) ? <h2 className='Failure'>No Results Found</h2> :
