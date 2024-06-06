@@ -20,7 +20,7 @@ return (
                 <Link to="/Genre" className='text-black no-underline'>Anime Genre</Link>
                 <Link to="/Manga" className='text-black no-underline'>Manga</Link>
                 <Link to="/Popular" className='text-black no-underline'>Popular Manga</Link>
-                <Link to="/Create" className='text-black no-underline'>Create</Link>
+                <Link to="/Create" className='text-black no-underline'>Create Review</Link>
                 <Link to="/Reviews" className='text-black no-underline'>My Reviews</Link>
             </nav>
         </section>
