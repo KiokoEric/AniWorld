@@ -1,9 +1,12 @@
-import SearchPage from "../../Components/Common/SearchPage/SearchPage";
 import "../Create/Create.css";
+import { v4 as uuidv4 } from 'uuid';
 import React, { ChangeEvent, useState } from 'react';
+import { useAppContext } from "../../Components/Context/AppContext";
+import SearchPage from "../../Components/Common/SearchPage/SearchPage";
 
 const Create: React.FC = () => {
 
+    const { addReview } = useAppContext()
     const [Title, setTitle] = useState("")
     const [Review, setReview] = useState("")
     const [Genre, setGenre] = useState("")
@@ -28,7 +31,8 @@ const Create: React.FC = () => {
 
     const AddAnime= (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        setSuccess("Anime has been successfully created.")
+        setSuccess("Review has been successfully created.")
+        addReview({id: uuidv4(), Title: Title, Review: Review, Genre: Genre, Image: Image })
     }
 
 return (
@@ -36,7 +40,7 @@ return (
         <SearchPage
             idName='Create'
             ContainerStyle= 'flex flex-col items-center justify-center mb-5 text-white'
-            Heading='Anime & Manga Review'
+            Heading='Create Anime & Manga Review'
             HeadingStyle='text-4xl'
             formStyle='hidden'
         />
@@ -67,7 +71,7 @@ return (
                 <label htmlFor="Image">Image Url</label>
                 <input type="text" name="Image" id="Image" placeholder='Enter Image Url...' value={Image} onChange={handleImage} className='border-black border-b outline-none px-2 py-1 text-black w-96' required />
             </p>
-            <p className='Green' >{Success}</p>
+            <p className='font-bold text-green-700'>{Success}</p>
             <button className='bg-black px-5 py-2 rounded text-base text-white' type="submit">Add New Review</button> 
         </form>
     </div>

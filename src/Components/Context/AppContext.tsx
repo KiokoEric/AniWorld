@@ -1,50 +1,57 @@
-// import { FC, createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { Review } from '../Type/Type'
 
-// const AppContext = createContext();
+interface ContextProps {
+    Reviews: Review[];
+    addReview: (review: Review) => void;
+    removeReview: (id: number) => void;
+}
 
-// export const useAppContext = () => {
-//     const context = useContext(AppContext)
-//     return context
-// }
+const AppContext = createContext<ContextProps | undefined>(undefined);
 
-// const AppContextProvider: FC = ({children}) => {
+export const useAppContext = ()=> {
+    const context = useContext(AppContext)
+    return context
+}
 
-//     const TodoState = () => {
-//         let Todos = localStorage.getItem("Todos");
+const AppContextProvider: React.FC<{ children: ReactNode }> = ({children}) => {
 
-//         if (Todos) {
-//             return JSON.parse(localStorage.getItem("Todos"))
-//         } else {
-//             return [];
-//         }
-//     }
+    const ReviewsState = () => {
+        let Reviews = localStorage.getItem("Reviews");
 
-//     const [Todos, setTodos] = useState(TodoState())
+        if (Reviews) {
+            return JSON.parse(localStorage.getItem("Reviews"))
+        } else {
+            return [];
+        }
+    }
 
-//     const addTodo = (Todo) => {
-//         setTodos([...Todos, Todo])
-//     }
+    const [Reviews, setReviews] = useState(ReviewsState())
 
-//     const removeTodo = (id) => {
-//         const OldTodo = [...Todos]
-//         const NewTodo = OldTodo.filter((Item) => Item.id !== id)
-//         setTodos(NewTodo)
-//     }
+    const addReview = (Review: any) => {
+        setReviews([...Reviews, Review])
+    }
 
-//     const editTodo = (id, EditedTodo) => {
-//         const EditedTask = Todos.map(Todo => (Todo.id === id ? EditedTodo : Todo));
-//         setTodos(EditedTask);
-//     };
+    const removeReview = (id: any) => {
+        const OldReview = [...Reviews]
+        const NewReview = OldReview.filter((Item) => Item.id !== id)
+        setReviews(NewReview)
+    }
 
-//     useEffect(() => {
-//         localStorage.setItem("Todos", JSON.stringify(Todos))
-//     },[Todos]);
+    // const editReview = (id: any, EditedReview) => {
+    //     const EditedReview = Reviews.map(Review:any => (Review.id === id ? EditedReview : Review));
+    //     setReviews(EditedReview);
+    // };
 
-//     return (
-//         <AppContext.Provider value={{ Todos, addTodo, removeTodo, editTodo }} >
-//             {children}
-//         </AppContext.Provider>
-//     )
-// }
+    useEffect(() => {
+        localStorage.setItem("Reviews", JSON.stringify(Reviews))
+    },[Reviews]);
 
-// export default AppContextProvider;
+    return (
+        <AppContext.Provider value={{ Reviews, addReview, removeReview}} >
+            {children}
+        </AppContext.Provider>
+    )
+}
+
+export default AppContextProvider;
