@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { MdEditSquare } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { useAppContext } from '../../Components/Context/AppContext';
-import SearchPage from '../../Components/Common/SearchPage/SearchPage';
+import Heading from '../../Components/Common/HeadingPage/Heading';
 
 const Review: React.FC = () => {
 
@@ -12,12 +12,11 @@ const Review: React.FC = () => {
 
 return (
     <div>
-        <SearchPage
+        <Heading
             idName='Review'
             ContainerStyle= 'flex flex-col items-center justify-center mb-5 text-white'
             Heading='My Anime & Manga Reviews'
             HeadingStyle='text-4xl'
-            formStyle='hidden'
         />
         <section className='grid grid-cols-3 mb-10 px-16' >
         {

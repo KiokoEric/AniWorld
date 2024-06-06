@@ -2,7 +2,7 @@ import "../Create/Create.css";
 import { v4 as uuidv4 } from 'uuid';
 import React, { ChangeEvent, useState } from 'react';
 import { useAppContext } from "../../Components/Context/AppContext";
-import SearchPage from "../../Components/Common/SearchPage/SearchPage";
+import Heading from "../../Components/Common/HeadingPage/Heading";
 
 const Create: React.FC = () => {
 
@@ -37,12 +37,11 @@ const Create: React.FC = () => {
 
 return (
     <div>
-        <SearchPage
+        <Heading
             idName='Create'
             ContainerStyle= 'flex flex-col items-center justify-center mb-5 text-white'
             Heading='Create Anime & Manga Review'
             HeadingStyle='text-4xl'
-            formStyle='hidden'
         />
         <form onSubmit={AddAnime} action="" method="get" className="flex flex-col items-center justify-center gap-8 mb-5">
             <p className="flex flex-col gap-2">
